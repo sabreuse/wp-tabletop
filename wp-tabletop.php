@@ -113,7 +113,6 @@ class WP_Tabletop {
 	 */
 	public function register_admin_styles() {
 
-		// TODO:	Change 'wp-tabletop' to the name of your plugin
 		wp_enqueue_style( 'wp-tabletop-admin-styles', plugins_url( 'wp-tabletop/css/admin.css' ) );
 
 	} // end register_admin_styles
@@ -142,6 +141,8 @@ class WP_Tabletop {
 	public function register_plugin_scripts() {
 
 		wp_enqueue_script( 'wp-tabletop-plugin-script', plugins_url( 'wp-tabletop/js/display.js' ) );
+		wp_enqueue_script( 'tabletop', plugins_url( 'wp-tabletop/js/tabletop.js' ) );
+
 
 	} // end register_plugin_scripts
 
