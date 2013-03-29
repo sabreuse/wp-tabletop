@@ -37,7 +37,7 @@ class WP_Tabletop {
 	function __construct() {
 
 		// Load plugin text domain
-		add_action( 'init', array( $this, 'wp_tabletop' ) );
+		// add_action( 'init', array( $this, 'wp_tabletop' ) );
 
 		// Register admin styles and scripts
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
@@ -49,8 +49,8 @@ class WP_Tabletop {
 
 		// Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-		register_uninstall_hook( __FILE__, array( $this, 'uninstall' ) );
+		// register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
+		// register_uninstall_hook( __FILE__, array( $this, 'uninstall' ) );
 
 	    /*
 	     * TODO:
@@ -63,8 +63,9 @@ class WP_Tabletop {
 	     * For more information:
 	     * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 	     */
-	    add_action( 'TODO', array( $this, 'action_method_name' ) );
-	    add_filter( 'TODO', array( $this, 'filter_method_name' ) );
+	    // add_action( 'TODO', array( $this, 'action_method_name' ) );
+	    // add_filter( 'TODO', array( $this, 'filter_method_name' ) );
+		add_shortcode('tabletop', array( $this, 'tabletop_shortcode' ) );
 
 	} // end constructor
 
@@ -77,36 +78,36 @@ class WP_Tabletop {
 		// TODO:	Define activation functionality here
 	} // end activate
 
-	/**
-	 * Fired when the plugin is deactivated.
-	 *
-	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
-	 */
-	public function deactivate( $network_wide ) {
-		// TODO:	Define deactivation functionality here
-	} // end deactivate
+	// /**
+	//  * Fired when the plugin is deactivated.
+	//  *
+	//  * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
+	//  */
+	// public function deactivate( $network_wide ) {
+	// 	// TODO:	Define deactivation functionality here
+	// } // end deactivate
 
-	/**
-	 * Fired when the plugin is uninstalled.
-	 *
-	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
-	 */
-	public function uninstall( $network_wide ) {
-		// TODO:	Define uninstall functionality here
-	} // end uninstall
+	// /**
+	//  * Fired when the plugin is uninstalled.
+	//  *
+	//  * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
+	//  */
+	// public function uninstall( $network_wide ) {
+	// 	// TODO:	Define uninstall functionality here
+	// } // end uninstall
 
 	/**
 	 * Loads the plugin text domain for translation
 	 */
-	public function plugin_textdomain() {
+	// public function plugin_textdomain() {
 
-		// TODO: replace "wp-tabletop-locale" with a unique value for your plugin
-		$domain = 'wp_tabletop';
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-        load_textdomain( $domain, WP_LANG_DIR.'/'.$domain.'/'.$domain.'-'.$locale.'.mo' );
-        load_plugin_textdomain( $domain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	// 	// TODO: replace "wp-tabletop-locale" with a unique value for your plugin
+	// 	$domain = 'wp_tabletop';
+	// 	$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+ //        load_textdomain( $domain, WP_LANG_DIR.'/'.$domain.'/'.$domain.'-'.$locale.'.mo' );
+ //        load_plugin_textdomain( $domain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 
-	} // end plugin_textdomain
+	// } // end plugin_textdomain
 
 	/**
 	 * Registers and enqueues admin-specific styles.
@@ -158,9 +159,9 @@ class WP_Tabletop {
 	 *		  Action Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
 	 *
 	 */
-	function action_method_name() {
-    	// TODO:	Define your action method here
-	} // end action_method_name
+	// function action_method_name() {
+ //    	// TODO:	Define your action method here
+	// } // end action_method_name
 
 	/**
 	 * NOTE:  Filters are points of execution in which WordPress modifies data
@@ -170,9 +171,17 @@ class WP_Tabletop {
 	 *		  Filter Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
 	 *
 	 */
-	function filter_method_name() {
-	    // TODO:	Define your filter method here
-	} // end filter_method_name
+	// function filter_method_name() {
+	//     // TODO:	Define your filter method here
+	// } // end filter_method_name
+
+	/**
+	 * Add a shortcode [tabletop]to allow adding a GDoc spreadsheet to page/post content.
+	 */
+	public function tabletop_shortcode($attr) {
+	    return 'Display the spreadsheet identified by '.$attr['key'];
+	}
+
 
 } // end class
 
