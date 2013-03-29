@@ -37,7 +37,7 @@ class WP_Tabletop {
 	function __construct() {
 
 		// Load plugin text domain
-		// add_action( 'init', array( $this, 'wp_tabletop' ) );
+		add_action( 'init', array( $this, 'plugin_textdomain' ) );
 
 		// Register admin styles and scripts
 		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
@@ -99,15 +99,14 @@ class WP_Tabletop {
 	/**
 	 * Loads the plugin text domain for translation
 	 */
-	// public function plugin_textdomain() {
+	public function plugin_textdomain() {
 
-	// 	// TODO: replace "wp-tabletop-locale" with a unique value for your plugin
-	// 	$domain = 'wp_tabletop';
-	// 	$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
- //        load_textdomain( $domain, WP_LANG_DIR.'/'.$domain.'/'.$domain.'-'.$locale.'.mo' );
- //        load_plugin_textdomain( $domain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+		$domain = 'wp_tabletop';
+		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+        load_textdomain( $domain, WP_LANG_DIR.'/'.$domain.'/'.$domain.'-'.$locale.'.mo' );
+        load_plugin_textdomain( $domain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 
-	// } // end plugin_textdomain
+	} // end plugin_textdomain
 
 	/**
 	 * Registers and enqueues admin-specific styles.
