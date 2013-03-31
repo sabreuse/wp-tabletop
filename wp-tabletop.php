@@ -140,8 +140,8 @@ class WP_Tabletop {
 	 */
 	public function register_plugin_scripts() {
 
-		wp_enqueue_script( 'wp-tabletop-plugin-script', plugins_url( 'wp-tabletop/js/display.js' ) );
 		wp_enqueue_script( 'tabletop', plugins_url( 'wp-tabletop/js/tabletop.js' ) );
+		wp_enqueue_script( 'wp-tabletop-plugin-script', plugins_url( 'wp-tabletop/js/display.js'), array('jquery', 'tabletop') );
 
 
 	} // end register_plugin_scripts
@@ -178,7 +178,17 @@ class WP_Tabletop {
 	 * Add a shortcode [tabletop]to allow adding a GDoc spreadsheet to page/post content.
 	 */
 	public function tabletop_shortcode($attr) {
-	    return 'Display the spreadsheet identified by '.$attr['key'];
+		$wptabletop_content = '    <div id="table_info"></div>
+    
+    <div id="explanation"></div>
+    
+    <h2>Let\'s talk about cats</h2>
+    <ul id="cats"></ul>
+
+    <h2>Let\'s learn a thing or two</h2>
+    <ul id="courses"></ul>';
+
+	    return $wptabletop_content;
 	}
 
 

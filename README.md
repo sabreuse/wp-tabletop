@@ -5,6 +5,10 @@ Implements the excellent (https://github.com/jsoma/tabletop)[tabletop.js] for Wo
 ##
 
 Usage:
+On the simplest level, activating the plugin loads tabletop.js
+
+A basic shortcode is provided as an example: [tabletop key=n]
+
 
 ### Changelog
 
