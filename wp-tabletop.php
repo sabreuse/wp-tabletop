@@ -140,8 +140,11 @@ class WP_Tabletop {
 	 */
 	public function register_plugin_scripts() {
 
+		// wp_enqueue_script( 'backbone' );
+		// wp_enqueue_script( 'underscore' );
 		wp_enqueue_script( 'tabletop', plugins_url( 'wp-tabletop/js/tabletop.js' ) );
-		wp_enqueue_script( 'wp-tabletop-plugin-script', plugins_url( 'wp-tabletop/js/display.js'), array('jquery', 'tabletop') );
+		wp_enqueue_script( 'tabletopSync', plugins_url( 'wp-tabletop/js/backbone.tabletopSync.js' ), array('backbone') );
+		wp_enqueue_script( 'wp-tabletop-plugin-script', plugins_url( 'wp-tabletop/js/display.js'), array('jquery', 'tabletop', 'backbone', 'underscore') );
 
 
 	} // end register_plugin_scripts
@@ -178,15 +181,13 @@ class WP_Tabletop {
 	 * Add a shortcode [tabletop]to allow adding a GDoc spreadsheet to page/post content.
 	 */
 	public function tabletop_shortcode($attr) {
-		$wptabletop_content = '    <div id="table_info"></div>
-    
-    <div id="explanation"></div>
-    
-    <h2>Let\'s talk about cats</h2>
-    <ul id="cats"></ul>
 
-    <h2>Let\'s learn a thing or two</h2>
-    <ul id="courses"></ul>';
+		$wptabletop_content = '    <h1>A Backbone.js example about cats I\'ve met</h1>
+    <marquee><p>As you can tell, you can make a very complicated web page with this stuff.</p></marquee>
+
+
+    <div id="wptt-content"></div>    ';
+
 
 	    return $wptabletop_content;
 	}
