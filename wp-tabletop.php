@@ -180,10 +180,9 @@ class WP_Tabletop {
 	/**
 	 * Add a shortcode [tabletop]to allow adding a GDoc spreadsheet to page/post content.
 	 */
-	public function tabletop_shortcode($attr) {
-		$params = $attr;
+	public function tabletop_shortcode($atts) {
 		wp_enqueue_script('wp-tabletop-plugin-script');
-    	wp_localize_script( 'wp-tabletop-plugin-script', 'WPTT', $params );
+    	wp_localize_script( 'wp-tabletop-plugin-script', 'WPTT', $atts );
 
 		$wptabletop_content = '    <h1>A Backbone.js example about cats I\'ve met</h1>
     <marquee><p>As you can tell, you can make a very complicated web page with this stuff.</p></marquee>
