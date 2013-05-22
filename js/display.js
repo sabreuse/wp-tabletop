@@ -5,7 +5,7 @@ var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&h
  You need to declare the tabletop instance separately, then feed it into the model/collection
  You *must* specify wait: true so that it doesn't try to fetch when you initialize
 */
-var storage = Tabletop.init( { key: public_spreadsheet_url, wait: true } );
+var storage = Tabletop.init( { key: WPTT.key, wait: true } );
 
 /*
  Need to specify that you'd like to sync using Backbone.tabletopSync

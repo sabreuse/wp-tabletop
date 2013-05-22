@@ -144,7 +144,7 @@ class WP_Tabletop {
 		// wp_enqueue_script( 'underscore' );
 		wp_enqueue_script( 'tabletop', plugins_url( 'wp-tabletop/js/tabletop.js' ) );
 		wp_enqueue_script( 'tabletopSync', plugins_url( 'wp-tabletop/js/backbone.tabletopSync.js' ), array('backbone') );
-		wp_enqueue_script( 'wp-tabletop-plugin-script', plugins_url( 'wp-tabletop/js/display.js'), array('jquery', 'tabletop', 'backbone', 'underscore') );
+		wp_register_script( 'wp-tabletop-plugin-script', plugins_url( 'wp-tabletop/js/display.js'), array('jquery', 'tabletop', 'backbone', 'underscore') );
 
 
 	} // end register_plugin_scripts
@@ -181,8 +181,8 @@ class WP_Tabletop {
 	 * Add a shortcode [tabletop]to allow adding a GDoc spreadsheet to page/post content.
 	 */
 	public function tabletop_shortcode($attr) {
-		$params = array('key' => $attr[1]);
-
+		$params = $attr;
+		wp_enqueue_script('wp-tabletop-plugin-script');
     	wp_localize_script( 'wp-tabletop-plugin-script', 'WPTT', $params );
 
 		$wptabletop_content = '    <h1>A Backbone.js example about cats I\'ve met</h1>
