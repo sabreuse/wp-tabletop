@@ -36,7 +36,7 @@ var CatCollection = Backbone.Collection.extend({
 
 var CatView = Backbone.View.extend({
   tagname: 'div',
-  template: _.template( '<div class="entry"><h2><%= name %>!</h2><h3>age <%= age %></h3><div class="body"><%= description %></div></div>'),
+  template: _.template( '<div class="wptt-entry"><h2><%= name %>!</h2><h3>age <%= age %></h3><div class="body"><%= description %></div></div>'),
   render: function() {
     $(this.el).html(this.template(this.model.toJSON()));
     return this;
@@ -62,12 +62,14 @@ function showInfo(cats) {
    and an idAttribute for the Backbone.Model (you can always
    use rowNumber, it comes baked in to Tabletop)
   */
-  thomas = new Cat({name: 'Thomas'})
+  var thomas = new Cat({name: 'Thomas'});
   thomas.fetch();
 
   var thomas_view = new CatView({ model: thomas });
     $("#wptt-content").append( thomas_view.render().el );
+
+  $('#wptt-content').append("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");
+
 }
 
-document.write("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");    
 }(jQuery));

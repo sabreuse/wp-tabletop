@@ -1,18 +1,13 @@
-body {
-  background: yellow;
-  font-family: "Comic Sans MS";
-}
-
-.entry {
+.wptt-entry {
   float: left;
   width: 200px;
-  border: solid black 3px;
+  border: 1px solid black;
   height: 250px;
   padding: 30px;
   margin: 30px;
   background: white;
 }
-h2 {
+.wptt-entry h2 {
   font-size: 2em;
   color: black;
   text-transform: uppercase;
