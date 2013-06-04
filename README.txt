@@ -1,19 +1,16 @@
 === Plugin Name ===
 Contributors: sabreuse
-Donate link: http://example.com/
+Donate link: http://sabreuse.com/
 Tags: tabletop.js, javascript, libraries, gdata, spreadsheet
 Requires at least: 3.5
 Tested up to: 3.6
 Stable tag: 0.1
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Access published Google Spreadsheets using the tabletop.js library.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Implements the excellent (https://github.com/jsoma/tabletop)[tabletop.js] for  WordPress. Tabletop is a javascript library that allows read-only access to published Google Spreadsheet records as JSON. This allows far more flexible uses of your spreadsheets than simply displaying them in an iFrame or as an HTML table.
 
 A few notes about the sections above:
 
@@ -63,12 +60,8 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+= 0.1 =
+* Initial version. Hook up Tabletop and Backbone, provide a basic shortcode.
 
 == Upgrade Notice ==
 
