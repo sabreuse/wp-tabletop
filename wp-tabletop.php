@@ -6,7 +6,7 @@ Description: WordPress implementation of the Tabletop.js library for working wit
 Version: 0.1
 Author: Amy Hendrix
 Author Email: sabreuse@gmail.com
-License: GPL
+License: GPL 2 or later
 
   Copyright 2013 Amy Hendrix (sabreuse@gmail.com)
 
@@ -49,52 +49,10 @@ class WP_Tabletop {
 
 		// Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-		// register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-		// register_uninstall_hook( __FILE__, array( $this, 'uninstall' ) );
 
-	    /*
-	     * TODO:
-	     * Define the custom functionality for your plugin. The first parameter of the
-	     * add_action/add_filter calls are the hooks into which your code should fire.
-	     *
-	     * The second parameter is the function name located within this class. See the stubs
-	     * later in the file.
-	     *
-	     * For more information:
-	     * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
-	     */
-	    // add_action( 'TODO', array( $this, 'action_method_name' ) );
-	    // add_filter( 'TODO', array( $this, 'filter_method_name' ) );
 		add_shortcode('tabletop', array( $this, 'tabletop_shortcode' ) );
 
 	} // end constructor
-
-	/**
-	 * Fired when the plugin is activated.
-	 *
-	 * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
-	 */
-	public function activate( $network_wide ) {
-		// TODO:	Define activation functionality here
-	} // end activate
-
-	// /**
-	//  * Fired when the plugin is deactivated.
-	//  *
-	//  * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
-	//  */
-	// public function deactivate( $network_wide ) {
-	// 	// TODO:	Define deactivation functionality here
-	// } // end deactivate
-
-	// /**
-	//  * Fired when the plugin is uninstalled.
-	//  *
-	//  * @param	boolean	$network_wide	True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog
-	//  */
-	// public function uninstall( $network_wide ) {
-	// 	// TODO:	Define uninstall functionality here
-	// } // end uninstall
 
 	/**
 	 * Loads the plugin text domain for translation
@@ -140,8 +98,6 @@ class WP_Tabletop {
 	 */
 	public function register_plugin_scripts() {
 
-		// wp_enqueue_script( 'backbone' );
-		// wp_enqueue_script( 'underscore' );
 		wp_enqueue_script( 'tabletop', plugins_url( 'wp-tabletop/js/tabletop.js' ) );
 		wp_enqueue_script( 'tabletopSync', plugins_url( 'wp-tabletop/js/backbone.tabletopSync.js' ), array('backbone') );
 		wp_register_script( 'wp-tabletop-plugin-script', plugins_url( 'wp-tabletop/js/display.js'), array('jquery', 'tabletop', 'backbone', 'underscore') );
@@ -152,30 +108,6 @@ class WP_Tabletop {
 	/*--------------------------------------------*
 	 * Core Functions
 	 *---------------------------------------------*/
-
-	/**
- 	 * NOTE:  Actions are points in the execution of a page or process
-	 *        lifecycle that WordPress fires.
-	 *
-	 *		  WordPress Actions: http://codex.wordpress.org/Plugin_API#Actions
-	 *		  Action Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
-	 *
-	 */
-	// function action_method_name() {
- //    	// TODO:	Define your action method here
-	// } // end action_method_name
-
-	/**
-	 * NOTE:  Filters are points of execution in which WordPress modifies data
-	 *        before saving it or sending it to the browser.
-	 *
-	 *		  WordPress Filters: http://codex.wordpress.org/Plugin_API#Filters
-	 *		  Filter Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
-	 *
-	 */
-	// function filter_method_name() {
-	//     // TODO:	Define your filter method here
-	// } // end filter_method_name
 
 	/**
 	 * Add a shortcode [tabletop]to allow adding a GDoc spreadsheet to page/post content.
