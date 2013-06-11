@@ -1,11 +1,10 @@
 .wptt-entry {
   float: left;
   width: 200px;
-  border: 1px solid black;
+  border: 1px solid #333;
   height: 250px;
   padding: 30px;
   margin: 30px;
-  background: white;
 }
 
 .wptt-entry h2 {
