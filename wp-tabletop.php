@@ -39,17 +39,11 @@ class WP_Tabletop {
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'plugin_textdomain' ) );
 
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
-
 		// Register site styles and scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_plugin_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_plugin_scripts' ) );
 
-		// Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
-		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-
+		// Register tabletop shortcode
 		add_shortcode('tabletop', array( $this, 'tabletop_shortcode' ) );
 
 	} // end constructor
@@ -116,11 +110,8 @@ class WP_Tabletop {
 		wp_enqueue_script('wp-tabletop-plugin-script');
     	wp_localize_script( 'wp-tabletop-plugin-script', 'WPTT', $atts );
 
-		$wptabletop_content = '    <h1>A Backbone.js example about cats I\'ve met</h1>
-    <marquee><p>As you can tell, you can make a very complicated web page with this stuff.</p></marquee>
-
-
-    <div id="wptt-content"></div>    ';
+		$wptabletop_content = '    <h1>A Backbone.js tabletop example</h1>
+	    <div id="wptt-content"></div>    ';
 
 	    return $wptabletop_content;
 	}
